@@ -7,6 +7,7 @@ const NavBar = () => {
    return (
     <>
       <nav className="w-full p-4 flex justify-around items-center bg-white border-b-1 border-gray-100 h-[70px] relative z-80">
+        
         <a href="/">
           <h1 className="text-xl font-bold">Beaginner teck stack</h1>
         </a>

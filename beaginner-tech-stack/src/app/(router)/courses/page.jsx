@@ -3,6 +3,7 @@ import {React, useEffect} from "react";
 import Welcomebanner from "./_components/Welcomebanner";
 import CourseList from "./_components/CourseList";
 import EventEmitter from 'events';
+import SideBanners from "./_components/SideBanners";
 
 const Courses = () => {
   useEffect(() => {
@@ -22,8 +23,8 @@ const Courses = () => {
 
       </div>
       {/* right section */}
-      <div>
-        right section
+      <div className="lg:block hidden">
+        <SideBanners/>
       </div>
 
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import CourseVideoDesccription from './_components/CourseVideoDesccription'
 import GlobalApi from '@/app/_utils/GlobalApi'
+import CourseEnrollSection from './_components/CourseEnrollSection'
 
 const CoursePreview = ({params}) => {
  const [courseInfo, setCourseInfo] = useState()
@@ -28,7 +29,7 @@ const CoursePreview = ({params}) => {
             </div>
             {/* course content */}
             <div>
-
+             <CourseEnrollSection/>
             </div>
 
         </div>

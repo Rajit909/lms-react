@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Welcomebanner = () => {
   return (
-    <div className='flex gap-5 bg-white rounded-lg p-5 items-center '>
+    <div className='flex gap-5 w-[98%] bg-white rounded-xl p-5 items-center '>
       <Image
       src='/images/logo.png'
       width={100}

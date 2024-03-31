@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import CourseVideoDesccription from './_components/CourseVideoDesccription'
 import GlobalApi from '@/app/_utils/GlobalApi'
 import CourseEnrollSection from './_components/CourseEnrollSection'
+import CourseContentSection from './_components/CourseContentSection'
 
 const CoursePreview = ({params}) => {
  const [courseInfo, setCourseInfo] = useState()
@@ -30,6 +31,7 @@ const CoursePreview = ({params}) => {
             {/* course content */}
             <div>
              <CourseEnrollSection/>
+             <CourseContentSection courseInfo={courseInfo}/>
             </div>
 
         </div>

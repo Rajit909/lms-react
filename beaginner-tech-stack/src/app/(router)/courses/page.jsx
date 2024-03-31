@@ -18,7 +18,7 @@ const Courses = () => {
       <div className="col-span-3">
         {/* banner */}
         <Welcomebanner />     
-{/* courselist */}
+      {/* courselist */}
         <CourseList/>
 
       </div>

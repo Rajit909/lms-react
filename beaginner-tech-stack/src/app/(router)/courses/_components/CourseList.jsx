@@ -29,12 +29,12 @@ const CourseList = () => {
       {/* title and filter */}
       <div className="flex items-center justify-between">
         <h2 className="text-[20px] font-bold text-blue-700">All courses</h2>
-        <div className="">
+        <div>
           <Select>
-            <SelectTrigger className="w-[100px] rounded-[6px]">
+            <SelectTrigger className="w-[100px]">
               <SelectValue placeholder="Filter" />
             </SelectTrigger>
-            <SelectContent className="rounded-[5px] w-[50%]">
+            <SelectContent>
               <SelectItem value="light">All</SelectItem>
               <SelectItem value="dark">paid</SelectItem>
               <SelectItem value="system">free</SelectItem>

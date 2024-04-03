@@ -1,7 +1,8 @@
 import NavBar from "./(router)/_components/Navbar/NavBar";
 import "./globals.css";
 
- import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
+import { Toaster } from "@/components/ui/sonner"
 
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <main className="relative overflow-hidden">
         {children}
       </main>
+      <Toaster />
         
         </body>
     </html>

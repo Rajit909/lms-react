@@ -30,7 +30,7 @@ const CoursePreview = ({params}) => {
             </div>
             {/* course content */}
             <div>
-             <CourseEnrollSection/>
+             <CourseEnrollSection courseInfo={courseInfo}/>
              <CourseContentSection courseInfo={courseInfo}/>
             </div>
 

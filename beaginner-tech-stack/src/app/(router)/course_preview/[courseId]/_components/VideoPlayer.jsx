@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VideoPlayer = ({videoUrl}) => {
+const VideoPlayer = ({videoUrl, poster}) => {
   return (
     <div className='flex justify-center'>
       <video
@@ -8,6 +8,7 @@ const VideoPlayer = ({videoUrl}) => {
       height={250}
       controls
       className='rounded-[7px] '
+      poster={poster}
       > 
         <source src={videoUrl} type='video/mp4'/>
       </video>

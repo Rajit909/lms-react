@@ -9,7 +9,7 @@ const CourseVideoDesccription = ({courseInfo}) => {
      <h2 className=' text-gray-500 font-bold text-[14px] mb-3 '>{courseInfo.author} </h2>
    
    {/* video player */}
-   <VideoPlayer videoUrl={courseInfo?.chapter[0]?.video?.url}/>
+   <VideoPlayer videoUrl={courseInfo?.chapter[0]?.video?.url} poster={courseInfo?.banner?.url}/>
    
    {/* description */}
    <h2 className="mt-5 font-semibold text-[17px]">

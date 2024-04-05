@@ -45,7 +45,7 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
       <h2 className="text-white text-[22px] font-bold  ">
         Enroll to the course
       </h2>
-      {user && (membership || courseInfo.free) ? (
+      {user && (membership || courseInfo.free)&&!isUserAlreadyEnrolled ? 
         <div className="px-5 flex flex-col gap-3">
           <h2 className="text-white font-light">
             Enroll now to Start Learn to build
@@ -57,7 +57,7 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
             Enroll now
           </Button>
         </div>
-      ) : !user ? (
+       : !user ? 
         <div className="px-5 flex flex-col gap-3">
           <h2 className="text-white font-light">
             Enroll now to Start Learn to build
@@ -68,7 +68,7 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
             </Button>
           </Link>
         </div>
-      ) : (
+       :  !isUserAlreadyEnrolled && 
         <div className="px-5 flex flex-col gap-3">
           <h2 className="text-white font-light">
             Buy Monthly Membership and get access to All courses
@@ -77,7 +77,21 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
             Buy Membership
           </Button>
         </div>
-      )}
+      }
+        {
+          isUserAlreadyEnrolled&& 
+          <div className="px-5 flex flex-col gap-3">
+          <h2 className="text-white font-light">
+            Continue to Learn this course
+          </h2>
+          <Link href={'/watch-course/'+isUserAlreadyEnrolled}>
+          <Button className="bg-white hover:bg-white hover:text-primary text-[blue] rounded-[7px]">
+            Continue
+          </Button>
+          </Link>
+        </div>
+        }
+
     </div>
   );
 };

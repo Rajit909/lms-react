@@ -8,20 +8,24 @@ import { useUser } from '@clerk/nextjs'
 
 const CoursePreview = ({params}) => {
  const [courseInfo, setCourseInfo] = useState()
- const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState(false)
+ const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState()
 
   const {user} = useUser();
 
   useEffect(() => {
     params&&getCourseInfoById();
-  }, [params])
+  }, [params]);
+
+  useEffect(()=>{
+    courseInfo&&user&&checkUserEnrolledToCourse();
+
+  }, [courseInfo, user])
   
 // used to get course info by slug name
     const getCourseInfoById = () => {
       GlobalApi.getCourseById(params?.courseId).then(res=> {
         console.log(res);
         setCourseInfo(res?.courseList)
-        res?.courseList&&checkUserEnrolledToCourse();
       })
     }
 
@@ -29,8 +33,8 @@ const CoursePreview = ({params}) => {
     const checkUserEnrolledToCourse = async () => {
       GlobalApi.checkUserEnrolledToCourse(courseInfo.slug, user.primaryEmailAddress.emailAddress).then(res => {
         console.log(res);
-        if(res?.userEnrollCourses?.id){
-          setIsUserAlreadyEnrolled(true);
+        if(res?.userEnrollCourses[0]?.id){
+          setIsUserAlreadyEnrolled(res?.userEnrollCourses[0]?.id);
         }
       })
     }

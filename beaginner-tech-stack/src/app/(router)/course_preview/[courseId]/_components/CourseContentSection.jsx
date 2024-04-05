@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Lock, Play } from "lucide-react";
 
-const CourseContentSection = ({ courseInfo }) => {
+const CourseContentSection = ({ courseInfo, isUserAlreadyEnrolled, watchMode=false, setActiveChapterIndex}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Check if courseInfo and its chapter property are present and if chapter is an array
@@ -14,10 +14,17 @@ const CourseContentSection = ({ courseInfo }) => {
       <h2>Contents</h2>
       {courseInfo.chapter.map((item, index) => (
         <div key={index}>
-          <h2 className={`border rounded-[8px] px-4 m-2 flex justify-between p-2 cursor-pointer hover:text-gray-600 hover:bg-gray-200 ${activeIndex===index&&'bg-[blue] text-white'}`}>
+          <h2 className={`border rounded-[8px] px-4 m-2 flex justify-between p-2 cursor-pointer  ${activeIndex===index&&'bg-[blue] text-white'}
+          ${isUserAlreadyEnrolled&&' hover:bg-[#0000FF] hover:text-white'}
+          `}
+          onClick={() => {watchMode&&setActiveChapterIndex(index)
+          watchMode&&setActiveIndex(index)
+          }}
+          >
+            
             {index + 1}. {item.name}
             {
-              activeIndex===index?
+              activeIndex===index || isUserAlreadyEnrolled?
               <Play className="h-4 w-4 mt-1"/>
              : <Lock className="h-4 w-4" />
             }

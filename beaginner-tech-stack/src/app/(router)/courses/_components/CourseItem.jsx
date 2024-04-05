@@ -10,7 +10,7 @@ const CourseItem = ({ course }) => {
           width={500}
           height={200}
           alt="banner"
-          className="rounded-t-xl"
+          className="rounded-t-xl h-[120px] lg:h-[150px] object-cover]"
         />
       </div>
       <div className="flex flex-col gap-5 p-3">
@@ -28,7 +28,7 @@ const CourseItem = ({ course }) => {
       </div> 
        } */}
        <div className="flex items-center gap-5">
-        <Image src="/images/chapter.jfif" width={50} height={50} alt="chapter"/>
+        <Image src="/images/chapter.jfif" width={30} height={30} alt="chapter"/>
         <h2 className="font-medium text-sm ">Total Chapters: {course?.totalChapters} </h2>
       </div> 
         <h2 className="text-[15px]">{course?.free ? "Free" : "Paid"}</h2>

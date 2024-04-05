@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <body>
           <NavBar />
           <div className="lg:flex">
-            <div className="lg:w-[15%] bg-white h-[full] mt-[1px] hidden lg:block">
+            <div className="lg:w-[15%] bg-white lg:h-[100vh] mt-[1px] hidden lg:block">
             <SideNav />
             </div>
             <div className="lg:w-[85%]">

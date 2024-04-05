@@ -13,7 +13,7 @@ const Courses = () => {
     }
   }, []);
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-4 p-5">
+    <div className=" grid grid-cols-1 md:grid-cols-4">
       {/* left section */}
       <div className="col-span-3">
         {/* banner */}

@@ -7,6 +7,7 @@ const VideoPlayer = ({videoUrl, poster}) => {
       width={600}
       height={250}
       controls
+      key={videoUrl}
       className='rounded-[7px] '
       poster={poster}
       > 

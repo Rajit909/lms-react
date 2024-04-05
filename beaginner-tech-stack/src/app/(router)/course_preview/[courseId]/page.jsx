@@ -50,7 +50,7 @@ const CoursePreview = ({params}) => {
             {/* course content */}
             <div>
              <CourseEnrollSection courseInfo={courseInfo} isUserAlreadyEnrolled={isUserAlreadyEnrolled}/>
-             <CourseContentSection courseInfo={courseInfo}/>
+             <CourseContentSection courseInfo={courseInfo} isUserAlreadyEnrolled={isUserAlreadyEnrolled}/>
             </div>
 
         </div>

@@ -4,6 +4,7 @@ import { useUser } from '@clerk/nextjs'
 import {React, useEffect, useState} from 'react'
 import CourseContentSection from '../../course_preview/[courseId]/_components/CourseContentSection'
 import CourseVideoDesccription from '../../course_preview/[courseId]/_components/CourseVideoDesccription'
+import { toast } from 'sonner'
 
 const WatchCourse = ({params}) => {
   const {user} = useUser();
@@ -25,8 +26,13 @@ const WatchCourse = ({params}) => {
   }
 
   // save completed chapterid
-  const onChapterCompleted = ()=> {
-    
+  const onChapterCompleted = (chapterId)=> {
+    GlobalApi.markChapterCompleted(params.enrollId, chapterId).then(res=>{
+      console.log(res);
+      if (res) {
+        toast('Chapter Marked as completed')
+      }
+    })
   }
 
   return courseInfo.name&& (
@@ -35,7 +41,7 @@ const WatchCourse = ({params}) => {
       {/* video desc & title */}
         <div className='col-span-2 bg-white'>
         <CourseVideoDesccription courseInfo={courseInfo} activeChapterIndex={activeChapterIndex} watchMode={true} 
-        setChapterCompleted={(chapterId) => console.log(chapterId)}/>
+        setChapterCompleted={(chapterId) => onChapterCompleted(chapterId)}/>
 
         </div>
         {/* course content */}

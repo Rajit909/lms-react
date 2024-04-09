@@ -159,11 +159,31 @@ const getUserEnrolledCourseDetails = async (id, email) => {
   return result;
 }
 
+const markChapterCompleted = async (enrollId, chapterId) => {
+  const query = gql`
+  mutation MyMutation {
+    updateUserEnrollCourse(
+      data: {completedChapter: {create: {CompletedChapter: {data: {chapterId: "`+chapterId+`"}}}}}
+      where: {id: "`+enrollId+`"}
+    ){
+      id
+    }
+    publishUserEnrollCourse(where: {id: "`+enrollId+`"}) {
+      id
+    }
+  }
+  
+  `
+  const result = await request(Master_URL, query);
+  return result;
+}
+
 export default {
   getAllCourseList,
   getSideBanner,
   getCourseById,
   enrollToCourse,
   checkUserEnrolledToCourse,
-  getUserEnrolledCourseDetails
+  getUserEnrolledCourseDetails,
+  markChapterCompleted
 };

@@ -26,13 +26,12 @@ const CourseVideoDesccription = ({
       <h2 className="mt-5 font-semibold text-[17px]">
         {watchMode ? (
           <span className="flex justify-between items-center">{courseInfo?.chapter[activeChapterIndex]?.name}
-          <Button 
-          onclick = {()=> setChapterCompleted(courseInfo?.chapter[activeChapterIndex]?.id)}
+          <Button
+          onClick = {()=> setChapterCompleted(courseInfo?.chapter[activeChapterIndex]?.id)}
           >
             Mark Completed
           </Button>
           </span>
-
         ) : (
           <span>About this course</span>
         )}

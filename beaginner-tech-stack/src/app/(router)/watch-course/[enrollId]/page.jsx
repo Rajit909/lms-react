@@ -9,6 +9,8 @@ import { toast } from 'sonner'
 const WatchCourse = ({params}) => {
   const {user} = useUser();
   const [courseInfo, setCourseInfo] = useState([]);
+  const [completedChapter, setCompletedChapter] = useState([]);
+
   const [activeChapterIndex, setActiveChapterIndex] = useState([]);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const WatchCourse = ({params}) => {
   const getUserEnrolledCourseDetail = () => {
     // get the enrolled course details
     GlobalApi.getUserEnrolledCourseDetails(params.enrollId, user.primaryEmailAddress.emailAddress).then(res => {
-      console.log(res.userEnrollCourses[0])
+      setCompletedChapter(res.userEnrollCourses[0].completedChapter)
       setCourseInfo(res.userEnrollCourses[0].courseList)
     })
   }
@@ -31,6 +33,7 @@ const WatchCourse = ({params}) => {
       console.log(res);
       if (res) {
         toast('Chapter Marked as completed')
+        getUserEnrolledCourseDetail();
       }
     })
   }
@@ -48,6 +51,7 @@ const WatchCourse = ({params}) => {
         <div className='lg:col-span-1 col-span-2'>
          <CourseContentSection courseInfo={courseInfo} isUserAlreadyEnrolled={true} 
          watchMode={true} 
+         completedChapter={completedChapter}
          setActiveChapterIndex={(index)=>setActiveChapterIndex(index)}/>
         </div>
 

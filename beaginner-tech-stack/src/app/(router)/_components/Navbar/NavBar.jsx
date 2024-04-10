@@ -17,6 +17,9 @@ const NavBar = () => {
     <div className=" bg-yellow-500 p-2 text-2xl font-extrabold text-white ">
       <marquee behavior="" direction="left">Note: Site is under construction or development mode!</marquee>
     </div>
+    <div className=" bg-blue-700 text-white ">
+      <marquee behavior="" direction="left">This site build using reactjs/nextjs, TailwindCss, graphQl, authentication(clerkauth) </marquee>
+    </div>
       <nav className="w-full p-4 px-5 flex justify-between items-center bg-white border-b-1 border-gray-100 h-[70px] relative z-80">
         
         <Link href={"/"} className="flex gap-5">

@@ -1,8 +1,13 @@
 import { React, useState } from "react";
 import { Lock, Play } from "lucide-react";
 
-const CourseContentSection = ({ courseInfo, isUserAlreadyEnrolled, watchMode=false, setActiveChapterIndex}) => {
+const CourseContentSection = ({ courseInfo, isUserAlreadyEnrolled, watchMode=false, setActiveChapterIndex, completedChapter}) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // use to check the chapter completed or not
+  const checkIsChapterCompleted = (chapterId)=>{
+    return completedChapter.find(item => item.chapterId==chapterId)
+  }
 
   // Check if courseInfo and its chapter property are present and if chapter is an array
   if (!courseInfo || !Array.isArray(courseInfo.chapter)) {
@@ -16,6 +21,9 @@ const CourseContentSection = ({ courseInfo, isUserAlreadyEnrolled, watchMode=fal
         <div key={index}>
           <h2 className={`border rounded-[8px] px-4 m-2 flex justify-between p-2 cursor-pointer  ${activeIndex===index&&'bg-[blue] text-white'}
           ${isUserAlreadyEnrolled&&' hover:bg-[#0000FF] hover:text-white'}
+          ${watchMode&&checkIsChapterCompleted(item.id)&&
+          'border-green-800 bg-green-400'
+          }
           `}
           onClick={() => {watchMode&&setActiveChapterIndex(index)
           watchMode&&setActiveIndex(index)

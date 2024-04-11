@@ -1,12 +1,28 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBanners from '../courses/_components/SideBanners'
 import WelcomeBannerDashboard from './_components/WelcomeBannerDashboard'
 import { useUser } from '@clerk/nextjs'
 import InProgressCourseList from './_components/InProgressCourseList'
+import GlobalApi from '@/app/_utils/GlobalApi'
 
 const Dashboard = () => {
   const {user} = useUser();
+  const [userEnrolledCourses, setUserEnrolledCourses] = useState([])
+
+  useEffect(()=>{
+    user&&getAllUserEnrolledCourses();
+  },[user])
+
+  // get all user enrolled course list
+  const getAllUserEnrolledCourses = () =>{
+    GlobalApi.getUserAllEnrolledCourseList(user.primaryEmailAddress.emailAddress).then(res=> {
+      console.log("courselist for dashboard");
+      console.log(res.userEnrollCourses)
+      setUserEnrolledCourses(res.userEnrollCourses)
+    })
+  }
+
   return (
     <div className=" grid grid-cols-1 md:grid-cols-4">
     {/* left section */}
@@ -15,7 +31,7 @@ const Dashboard = () => {
     <WelcomeBannerDashboard user={user}/>
 
     {/* inprogress course list */}
-    <InProgressCourseList/>
+    <InProgressCourseList userEnrolledCourses={userEnrolledCourses}/>
     
     </div>
     {/* right section */}

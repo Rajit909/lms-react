@@ -18,7 +18,7 @@ const Dashboard = () => {
   const getAllUserEnrolledCourses = () =>{
     GlobalApi.getUserAllEnrolledCourseList(user.primaryEmailAddress.emailAddress).then(res=> {
       console.log("courselist for dashboard");
-      console.log(res.userEnrollCourses)
+      console.log(res)
       setUserEnrolledCourses(res.userEnrollCourses)
     })
   }

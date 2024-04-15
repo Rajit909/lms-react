@@ -178,7 +178,7 @@ const markChapterCompleted = async (enrollId, chapterId) => {
       id
     }
   }
-  
+
   `
   const result = await request(Master_URL, query);
   return result;
@@ -205,7 +205,7 @@ const getUserAllEnrolledCourseList = async (email)=> {
         description
         demoUrl
         tag
-        chapter {
+        chapter(first:50) {
           ... on Chapter {
             id
             name

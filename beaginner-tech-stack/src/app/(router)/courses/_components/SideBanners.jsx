@@ -15,10 +15,10 @@ const SideBanners = () => {
         })
     }
   return (
-      <div className='flex flex-col gap-10 '>
+      <div className='flex flex-col gap-10 mt-2'>
       {sideBannerList?.length > 0
           ? sideBannerList.map((item, index) => (
-              <div key={index} className='bg-white p-2'>
+              <div key={index} className='bg-white p-2 rounded-xl'>
                 <Image 
                 src={item?.banner.url}
                 width={350}

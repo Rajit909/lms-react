@@ -22,21 +22,33 @@ const WatchCourse = ({params}) => {
   const getUserEnrolledCourseDetail = () => {
     // get the enrolled course details
     GlobalApi.getUserEnrolledCourseDetails(params.enrollId, user.primaryEmailAddress.emailAddress).then(res => {
-      setCompletedChapter(res.userEnrollCourses[0].completedChapter)
-      setCourseInfo(res.userEnrollCourses[0].courseList)
+       // Extract completed chapter IDs
+       setCompletedChapter(res.userEnrollCourses[0].completedChapter.map(completedChapter => completedChapter.chapterId))
+    
+    setCourseInfo(res.userEnrollCourses[0].courseList);
     })
   }
 
-  // save completed chapterid
   const onChapterCompleted = (chapterId)=> {
+    // Check if the chapter is already completed
+    if (completedChapter.includes(chapterId)) {
+      toast('Chapter already marked as completed');
+      return;
+    }
+  
     GlobalApi.markChapterCompleted(params.enrollId, chapterId).then(res=>{
+      console.log("save completed chapter");
       console.log(res);
+      
       if (res) {
-        toast('Chapter Marked as completed')
-        getUserEnrolledCourseDetail();
+        // Update completedChapterIds state with the newly completed chapterId
+        toast('Chapter Marked as completed');
+        completedChapter(prevCompletedChapterIds => [...prevCompletedChapterIds, chapterId]);
+        getUserEnrolledCourseDetail(); // Refresh enrolled course details
       }
-    })
+    });
   }
+  
 
   return courseInfo.name&& (
     <div>

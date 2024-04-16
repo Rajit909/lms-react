@@ -12,16 +12,16 @@ const Dashboard = () => {
 
   useEffect(()=>{
     user&&getAllUserEnrolledCourses();
-  },[user])
+  },[user, getAllUserEnrolledCourses])
 
   // get all user enrolled course list
-  const getAllUserEnrolledCourses = () =>{
+  const getAllUserEnrolledCourses = useCallback(() => {
     GlobalApi.getUserAllEnrolledCourseList(user.primaryEmailAddress.emailAddress).then(res=> {
       console.log("courselist for dashboard");
       console.log(res)
       setUserEnrolledCourses(res.userEnrollCourses)
     })
-  }
+  }, [user])
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-4">

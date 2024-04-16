@@ -14,7 +14,7 @@ const WelcomeBannerDashboard = ({user}) => {
       <div className="text-[32px] font-light">
         Welcome Back,
         <span className=' font-semibold text-[blue]'>{user?.fullName}</span>
-        <h2 className="font-light text-[16px] text-slate-500">Let's Begin Learning where you left off.
+        <h2 className="font-light text-[16px] text-slate-500">Let s Begin Learning where you left off.
         </h2>
       </div>
     </div>

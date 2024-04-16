@@ -17,7 +17,7 @@ export default function Home() {
     }else{
       isLoaded&&router.push('/courses')
     }
-  },[user])
+  },[user, isLoaded, router])
 
   return (
     <>    

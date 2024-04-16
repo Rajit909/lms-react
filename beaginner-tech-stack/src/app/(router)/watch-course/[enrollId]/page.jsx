@@ -16,10 +16,10 @@ const WatchCourse = ({params}) => {
   useEffect(() => {
    params&&user&&getUserEnrolledCourseDetail();
 
-  }, [params&&user])
+  }, [params, user , getUserEnrolledCourseDetail])
   
 
-  const getUserEnrolledCourseDetail = () => {
+  const getUserEnrolledCourseDetail = useCallback(() => {
     // get the enrolled course details
     GlobalApi.getUserEnrolledCourseDetails(params.enrollId, user.primaryEmailAddress.emailAddress).then(res => {
        // Extract completed chapter IDs
@@ -27,7 +27,7 @@ const WatchCourse = ({params}) => {
     
     setCourseInfo(res.userEnrollCourses[0].courseList);
     })
-  }
+  }, [params, user])
 
   const onChapterCompleted = (chapterId)=> {
     // Check if the chapter is already completed

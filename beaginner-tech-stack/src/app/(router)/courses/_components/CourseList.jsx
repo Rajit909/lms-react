@@ -48,8 +48,8 @@ const CourseList = () => {
       <div className="grid col-span-2 lg:grid-cols-3 gap-5 mt-5">
         {courseList?.length > 0
           ? courseList.map((item, index) => (
-            <Link href={'/course_preview/'+item.slug}>
-              <div key={index}>
+            <Link href={'/course_preview/'+item.slug} key={index}>
+              <div >
                 <CourseItem course={item} />
               </div>
               </Link>

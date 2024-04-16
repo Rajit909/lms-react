@@ -14,32 +14,32 @@ const CoursePreview = ({ params }) => {
 
   useEffect(() => {
     params && getCourseInfoById();
-  }, [params]);
+  }, [params, getCourseInfoById]);
 
   useEffect(() => {
     courseInfo && user && checkUserEnrolledToCourse();
-  }, [courseInfo, user]);
+  }, [courseInfo, user, checkUserEnrolledToCourse]);
 
   // used to get course info by slug name
-  const getCourseInfoById = () => {
-    GlobalApi.getCourseById(params?.courseId).then((res) => {
-      console.log(res);
-      setCourseInfo(res?.courseList);
-    });
-  };
+  const getCourseInfoById = useCallback(() => {
+  GlobalApi.getCourseById(params?.courseId).then((res) => {
+    console.log(res);
+    setCourseInfo(res?.courseList);
+  });
+}, [params]);
+
 
   // to check user already enrolled to course or not
-  const checkUserEnrolledToCourse = async () => {
-    GlobalApi.checkUserEnrolledToCourse(
-      courseInfo.slug,
-      user.primaryEmailAddress.emailAddress
-    ).then((res) => {
+  
+  const checkUserEnrolledToCourse = useCallback(() => {
+    GlobalApi.checkUserEnrolledToCourse(courseInfo.slug, user.primaryEmailAddress.emailAddress)
+    .then((res) => {
       console.log(res);
       if (res?.userEnrollCourses[0]?.id) {
         setIsUserAlreadyEnrolled(res?.userEnrollCourses[0]?.id);
       }
     });
-  };
+  }, [courseInfo, user])
 
   return (
     courseInfo && (

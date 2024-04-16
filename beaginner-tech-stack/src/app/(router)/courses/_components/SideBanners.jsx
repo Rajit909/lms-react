@@ -30,10 +30,10 @@ const SideBanners = () => {
               </div>
             ))
           : [1, 2, 3].map((item, index) => (
-            <div className="p-2 bg-white">
+            <div className="p-2 bg-white" key={index}>
 
               <div
-                key={index}
+          
                 className="w-full h-40 rounded-xl bg-slate-200 animate-pulse"
                 >
                 </div>

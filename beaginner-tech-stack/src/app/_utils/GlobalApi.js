@@ -223,7 +223,7 @@ const getUserAllEnrolledCourseList = async (email)=> {
   return result;
 }
 
-export default {
+const GlobalApi = {
   getAllCourseList,
   getSideBanner,
   getCourseById,
@@ -233,3 +233,5 @@ export default {
   markChapterCompleted,
   getUserAllEnrolledCourseList
 };
+
+export default GlobalApi;

@@ -1,7 +1,7 @@
 'use client'
 import GlobalApi from '@/app/_utils/GlobalApi'
 import { useUser } from '@clerk/nextjs'
-import {React, useEffect, useState} from 'react'
+import {React, useCallback, useEffect, useState} from 'react'
 import CourseContentSection from '../../course_preview/[courseId]/_components/CourseContentSection'
 import CourseVideoDesccription from '../../course_preview/[courseId]/_components/CourseVideoDesccription'
 import { toast } from 'sonner'
@@ -16,7 +16,7 @@ const WatchCourse = ({params}) => {
   useEffect(() => {
    params&&user&&getUserEnrolledCourseDetail();
 
-  }, [params, user , getUserEnrolledCourseDetail])
+  }, [params, user ])
   
 
   const getUserEnrolledCourseDetail = useCallback(() => {

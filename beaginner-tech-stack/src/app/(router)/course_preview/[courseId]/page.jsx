@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CourseVideoDesccription from "./_components/CourseVideoDesccription";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import CourseEnrollSection from "./_components/CourseEnrollSection";
@@ -14,11 +14,11 @@ const CoursePreview = ({ params }) => {
 
   useEffect(() => {
     params && getCourseInfoById();
-  }, [params, getCourseInfoById]);
+  }, [params]);
 
   useEffect(() => {
     courseInfo && user && checkUserEnrolledToCourse();
-  }, [courseInfo, user, checkUserEnrolledToCourse]);
+  }, [courseInfo, user]);
 
   // used to get course info by slug name
   const getCourseInfoById = useCallback(() => {

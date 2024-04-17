@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import SideBanners from '../courses/_components/SideBanners'
 import WelcomeBannerDashboard from './_components/WelcomeBannerDashboard'
 import { useUser } from '@clerk/nextjs'
@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   useEffect(()=>{
     user&&getAllUserEnrolledCourses();
-  },[user, getAllUserEnrolledCourses])
+  },[user])
 
   // get all user enrolled course list
   const getAllUserEnrolledCourses = useCallback(() => {

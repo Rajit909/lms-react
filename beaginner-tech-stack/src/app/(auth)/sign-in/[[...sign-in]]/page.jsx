@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <>
-    <div>
+    <div className="flex justify-center items-center">
     <SignIn />
     </div>
     </>
